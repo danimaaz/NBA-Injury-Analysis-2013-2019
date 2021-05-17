@@ -1,0 +1,52 @@
+import os
+import requests
+import pandas as pd
+import time
+from bs4 import BeautifulSoup
+
+#------- User Inputs -----------------------
+#save path and output filename
+savepath='../../data/01_raw/'
+filename = 'PST_injurylist_1990-2020.csv'
+
+
+url = "https://www.prosportstransactions.com/basketball/Search/SearchResults.php?Player=&Team=&BeginDate=1992-07-01&EndDate=2020-10-12&InjuriesChkBx=yes&Submit=Search&start=0"
+
+#creating a function to scrape data for these pages
+def extract_injury_data(strt_pt):
+    #base url for each page of data
+    base_url = "https://www.prosportstransactions.com/basketball/Search/SearchResults.php?Player=&Team=&BeginDate=1992-07-01&EndDate=2020-10-12&InjuriesChkBx=yes&Submit=Search&start="
+    url = base_url + str(strt_pt)
+    response = requests.get(url)
+    check = response.status_code
+    #verifying that our request was accepted
+    if check == 200:
+        soup = BeautifulSoup(response.text, "html.parser")
+        df_page = pd.read_html(url)
+        df_page = df_page[0]
+        #dropping their columns
+        df_page.drop([0],inplace=True)
+        df_page[2]=df_page[2].str[2:]
+        df_page[3]=df_page[3].str[2:]
+        df_page.columns = ['Date','Team','Acquired','Relinquished','Notes']
+        x_page = df_page
+        return x_page
+
+#append the rest of the data
+comp = 27901
+start = 25
+tick = 25
+append_data_to_this = extract_injury_data(0)
+for i in range(1,10**6):
+    check = (i*tick)
+    if check<27901:
+        df_pg_data = extract_injury_data(check)
+        append_data_to_this = append_data_to_this.append(df_pg_data)
+    time.sleep(3)
+
+print('Saving files......')
+
+filename= os.path.join(savepath,filename)
+appended_data.to_csv(filename)
+
+print('Finished')
