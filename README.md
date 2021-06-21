@@ -3,13 +3,25 @@
 ## Introduction
 Recently, NBA personalities have complained that the players in the league are 'overworked' and that that results in preventable injuries. In this report, I sought out to investigate whether or not there is any truth to that general sentiment. Additionally, I also explored whether or not the number of games played in the NBA regular season is necessary for determining the playoff picture, and if reducing the number of games would be a feasible solution to players feeling 'overworked'. 
 
+
+
 ## Methodology
 
-Prior to gathering the data, I had to decide exactly how I would classify a player's 'workload' and whether or not they were overworked. Upon reading [these](https://pubmed.ncbi.nlm.nih.gov/32125672/) [two](https://www.scienceforsport.com/acutechronic-workload-ratio/) articles, I decided that the best method would be to track what a player's acute-chronic workload ratio (ACWR for short) was at the time of the injury. The ACWR ratio monitors how much effort the athlete has recently exerted vs how much effort the athlete is _used_ to exerting. Generally, sports scientists use the average workload the athlete has exerted over the past 7 days  and 28 days as the 'recent effort' and 'normal effort' respectively. Classifying exactly what an NBA player's workload is was tricky. Since I have no access to the training data of individual datas, I was forced to resort to statistics that are readily available to the public on NBA.com. I decided that using the in-game distances a player has traveled would be the most appropriate metric to define as a player's 'workload'. 
+Prior to gathering the data, I had to decide exactly how I would classify a player's 'workload' and whether or not they were overworked. Upon reading [these](https://pubmed.ncbi.nlm.nih.gov/32125672/) [two](https://www.scienceforsport.com/acutechronic-workload-ratio/) articles, I decided that the best method would be to track what a player's acute-chronic workload ratio (ACWR for short) was at the time of the injury. The ACWR ratio monitors how much effort the athlete has recently exerted vs how much effort the athlete is _used_ to exerting. Generally, sports scientists use the average workload the athlete has exerted over the past 7 days  and 28 days as the 'recent effort' and 'normal effort' respectively. An ACWR above 1 indicates that an athlete has exerted more effort on average over the past 7 days than over the past 28 days. Similarly,  ACWR below 1 indicates that an athlete has exerted less effort on average over the past 7 days than over the past 28 days. And finally, an ACWR of 1 indicates that an athlete has exerted the exact same amount of effort on average the past 7 days as he has over the past 28 days. 
+
+Classifying exactly what an NBA player's workload is was tricky. Since I have no access to the training data of individual players, I was forced to resort to statistics that are readily available to the public on NBA.com. I decided that using the in-game distances a player has traveled would be the most appropriate metric to define as a player's 'workload'. 
 
 Next, I had to decide which timeframes I had to use to conduct this analysis. The NBA only started tracking the distance traveled by players during the 2013-14 season, so I was restricted between the years of 2013-2021. Considering that the 2019-20 and 2020-21 seasons were heavily affected by the onset of COVID-19, I decided to only conduct my analysis on the seasons that occured between 2013-2019.
 
 While my analysis was only on data from 2013-2019, I also had to consider that a player's injury history may play a large role in how susceptible they are to injuries. Thus, I gathered injury data from 1992-2019 to ensure that every player in the NBA would have their true injury history recorded. 
+
+
+
+## Hypothesis
+
+Being an avid NBA fan over the past 10 years (Go Knicks!), the eye test tells me that injuries are indeed on the rise. To me, it feels like an important player is getting injured every other week. When I was younger, important players seemed to rarely get injured and injuries were viewed more as like 'freak accident'. Additionally, the league pace of the league has also increased significantly over the past 10 years due to the rise of 'small ball' strategies (teams opting to play the smaller and quicker players). Since teams are playing a lot faster than they have before, I do suspect that many injuries can be attributed to the tough 82 game schedule. Also, the eye test tells me that the most notable injuries seem to happen when players are in the middle of a rough patch in the team's schedule. Since more players are expected to run more each game, a week with 4-5 games can be incredibly taxing on a player. Thus I do expect that we will see a strong correlation between the average ACWR of players and number of injuries.
+
+
 
 ### Gathering the injury data
 Using Python's Beautiful Soup package, I was able to extract the necessary injury data from [ProSportsTransactions.com](prosportstransactions.com). I only gathered data from the 'Movement to/from injured/inactive list (IL)' portion of the transactions.
@@ -17,6 +29,7 @@ Using Python's Beautiful Soup package, I was able to extract the necessary injur
 Below is a screenshot of how the data looked like once I scraped it. 
 
 **Fig. 1**:
+
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019/blob/main/Images%20and%20Graphs/example%20sc.PNG "Figure 1")
 
 As you can see, there are only 5 columns: Date, Team, Acquired, Relinquished and Notes. 
@@ -48,9 +61,112 @@ Once I was finished compiling the player injury history data, I was ready to mer
 Once I incordporated the injury history of the players' into my 2013-2019 data, I was almost ready to analyze it. The last thing I had to do was gather the in-game distances traveled by the players over the past 7 and 28 days. I used the [NBA API](https://github.com/swar/nba_api) library to help me with extract the necessary data. Once I finished scraping the necessary data, the data was finally ready for analysis. Below is a screencap of the data right before I started the analysis:
 
 **Fig. 2**:
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019/blob/main/Images%20and%20Graphs/ready_for_analysis.PNG "Figure 1")
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019/blob/main/Images%20and%20Graphs/ready_for_analysis.PNG "Figure 2")
+
+## Exploring the Data
+Before Jumping into the analysis, let's take a quick glance at the data to see if we can notice any trends. Firstly, let's see if injuries truly _are_ on the rise in the NBA.
+
+**Fig. 3**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Number%20of%20Injuries%20per%20Szn.png "Figure 3")
+
+From this graph here, we can see that injuries have been increasing since 2013. The 2013-14 season only had a grand total of 245 injuries, whereas the 2018-19 season had a total of 547 injuries. That is a significant increase that deserves to be investigated. Let's look at the severity of injuries per season as well. Below is how I classified the severity of each injury (based on the total number of days out): 
+
+**Table 1**:
+
+| Severity           | Injury Duration |
+| -------------------|:---------------:|
+| Mild               | 0-28            |
+| Moderate           | 28-90           |
+| Moderately Serious | 90-180          |
+| Serious            | 180+            |
+
+
+
+**Fig. 4**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Category%20of%20Injuries%20per%20szn.png "Figure 4")
+
+As we can see from the above graph, it appears that most of the injuries that occur in the NBA are mild. Additionally, the increase in the number of mild injuries appears to be the main cause of the drastic difference in injuries between the 2013-14 and 2018-19 seasons. However, it is worth noting that there was also a large increase in the amount of serious injuries between 2013-14 and 2018-19 seasons as well.
+
+As this project is trying to see if players are getting 'overworked', let's also compare the average ACWR for each injury across each season.
+
+**Fig. 5**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Uncombined%20Images/Average%20AWCN%20of%20injured%20players%20by%20season.png "Figure 5")
+
+It appears that the ACWR of injuries has remained relatively consistent across the years, each year appears to have an average ACWR that is close to 1. To understand the consistency of the ACWR over the seasons better, let's also take a look at both the 7 and 28 day averages of the distance traveled by players in game. My initial hypothesis mentioned that it seems like NBA players are working more than they did in previous years.
+
+**Fig. 6**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Uncombined%20Images/Frequency%20of%20Injuries%20by%20body%20part.png "Figure 6")
+
+The average distances traveled by NBA players (immediately prior to injuries) have remained relatively consistent since 2013-14. This contradicts my initial hypothesis that the sharp increase in injuries can be attributed by the higher demands that player have today.  
+
+
+Let's also take a look at which body parts tend to be injured the most in the NBA. 
+
+
+**Fig. 7**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Uncombined%20Images/Frequency%20of%20Injuries%20by%20body%20part.png "Figure 7")
+
+It appears that foot, knee and upper leg injuries are by far the most common injuries in the NBA. Let's see which body part tends to incur the most severe injuries. 
+
+**Fig. 8**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Average%20Injury%20duration%20per%20body%20part.png "Figure 8")
+
+This graph shows that a total of 6 body parts have an average injury duration that is over 30 days. Knee injuries tend to be the most severe injuries on average, with an average knee injury lasting ~49 days. In order to explore this further, let's break down the injuries by their severity and body parts alike. 
+
+**Fig. 9**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Body%20Parts%20affected%20by%20Injuries%20-%20all%20categories.png "Figure 9")
+
+It appears that foot and knee injuries are prominent in all the different categories of injuries. Figure 9 shows us that the average injury duration for knee and foot injuries (shown in Figure 8) are dragged down by the fact that there is a huge amount mild foot and knee injuries. 
 
 ## Analysis
+
+From my hypothesis, I thought that there would be a strong correlation between the number of injuries per season and the average ACWR of the injured players. However, the graphs from Figure 3 and Figure 5 made me pessimistic that I would find a strong correlation. When calculating the correlation (link to the code [here](post the link to the EDA code)), the correlation coefficient was only  ~ -0.114. Not only was the correlation value close to 0 (signifying that it is a poor predictior), it was also negative! This indicates that I should probably take a deeper dive into what may be causing this increase injuries.
+
+### Taking a deeper look at the ACWR
+
+While the ACWR doesn't appear to have a strong correlation with the number of injuries, it is interesting to look at whether or not the ACWR plays a role in how serious an injury is. Below is a graph showing the average ACWRs of different injury severities. 
+
+
+**Fig. 10**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/inj%20severity%20vs%20average%20acwr.png "Figure 10")
+
+Surprisingly, there doesn't appear to be a large disparity between the average ACWRs of each injury severity category. I would imagine that players with higher ACWRs would tend to have more 'severe' injuries. To investigate this further, I also plotted a scatterplot of the ACWRs of players and their respective injury durations. 
+
+**Fig. 11**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/inj%20severity%20vs%20average%20acwr.png "Figure 11")
+
+When I calculated the correlation coefficient of a player's ACWR vs their injury duration, it came up to an abysmal 0.046. In other words, there doesn't appear to be a strong correlation between a player's ACWR and their injury duration. 
+
+Since nothing seemed to be working, I decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2.
+
+**Table 2**:
+
+| Range              | ACWR            |
+| -------------------|:---------------:|
+| Low                |  0 - 0.5        |
+| Average            |  0.5 - 1.5      |
+| High               |  1.5 +          |
+
+
 
 ## Conclusion
 
