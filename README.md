@@ -156,7 +156,7 @@ Surprisingly, there doesn't appear to be a large disparity between the average A
 
 When I calculated the correlation coefficient of a player's ACWR vs their injury duration, it came up to an abysmal 0.046. In other words, there doesn't appear to be a strong correlation between a player's ACWR and their injury duration. 
 
-Since nothing seemed to be working, I decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2.
+Since nothing seemed to be working, I decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 12 illustrates the number of injuries for each body part in each ACWR range. 
 
 **Table 2**:
 
@@ -165,6 +165,44 @@ Since nothing seemed to be working, I decided to see whether or not high ACWRs c
 | Low                |  0 - 0.5        |
 | Average            |  0.5 - 1.5      |
 | High               |  1.5 +          |
+
+**Fig. 12**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Parts%20for%20players%20w%20COMBINED%20ACWRs.png "Figure 12")
+
+From above, the ACWR graphs look extremely similar for each 'range' of the ACWR. In Figure 13, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
+
+**Fig. 13**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Duration%20by%20body%20part%20-%20COMBINED%20ACWR.png "Figure 13")
+
+In this graph, we see that high ACWRs appear to give more severe knee, lower leg and upper body injuries. Let's look at what happens if we _only_ consider knee, lower leg and upper body injuries. Will there be a trend? 
+
+
+**Fig. 14**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20durations%20vs%20ACWR%20-%20knee%20lower%20leg%20and%20upper%20body.png "Figure 14")
+
+From the scatter plot above, there doesn't seem to be any visible correlation. The correlation coefficient between the ACWR and injury duration when we only considered these specific injuries was only 0.073. While it is still better than 0.046 correlation coefficient that I calculated when consideirng *all* injuries, it is still far too small to draw any conclusions from it. 
+
+I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figure 15 and 16 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
+
+
+**Fig. 15**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20history%20(duration)%20-%20COMBINED%20acwr.png "Figure 15")
+
+
+**Fig. 16**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20count%20-%20COMBINED%20acwr.png "Figure 16")
+
+
 
 
 
