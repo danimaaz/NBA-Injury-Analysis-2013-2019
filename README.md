@@ -234,10 +234,93 @@ It appears as if the ACWR range does not appear to make players more or less inj
 
 Every sports fan knows how worrisome a player's injury history can be. Considering that AWCR doesn't appear to have a big impact on injuries, it is worth studying how important a player's injury history is. As previously mentioned, I considered two different types of injury histories: the total amount of time a player was out (their cumulative injury duration) and the total number of times a player was injured (their injury counts).
 
-To be even more precise, I will be considering a player's injury history to their entire body, and a player's injury history to just the affected body part. 
+To be even more precise, I will be considering a player's injury history to their entire body, and a player's injury history to just the affected body part. The injury histories were split into different 'ranges' that are explained in Tables 3 and 4.
+
+**Table 3**:                                                                              
+
+| Injury History Severity  | Injury History (days) |
+| -------------------------|:---------------------:|
+| Little-No                 | 0-28                  |
+| Mild                     | 28-90                 |
+| Moderate                 | 90-180                |
+| Serious                  | 180+                  |
 
 
+**Table 4**:
 
+| Injury History Severity  | Injury History (count) |
+| -------------------------|:----------------------:|
+| No                       | 0                      |
+| Mild                     | 1-3                    |
+| Moderate                 | 3-5                    |
+| Serious                  | 5+                     |
+
+
+In Figures 18 and 19, I broke down the number of injuries in each category of injury history severity. Figure 18 focuses only on the player's injury history to that specific body part. Whereas Figure 19 considers the player's _total_ injury history (all body parts).  
+
+**Fig. 18**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/num%20of%20inj%20based%20on%20body%20part%20COMBINED.png "Figure 18")
+
+**Fig. 19**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/num%20of%20injuries%20based%20on%20total%20COMBINED.png "Figure 19")
+
+
+In Figures 20 and 21, I break down the average injury duration depending on the category of the player's injury history severity. Figure 20 focuses only on the player's injury history to that specific body part. Whereas Figure 21 considers the player's _total_ injury history (all body parts).  
+
+
+**Fig. 20**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Avg%20Duration%20based%20on%20body%20part%20COMBINED.png "Figure 20")
+
+**Fig. 21**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Avg%20Duration%20based%20on%20total%20COMBINED.png "Figure 21")
+
+As you can see from the above graphs, there are pretty notable differences between the 'types' of injury histories we use. More specifically, the 'Mild' categories in both the 'count' and 'duration' versions of the injury histories are defined differently. The 'Mild' category of injury histories is defined as when a player has incurred between 1-3 injuries in the 'count' version. Whereas in the 'duration' version, a 'Mild' injury history is when a player has incurred between 28-90 days of an injury. This is likely what explains the large discrepancy between the two graphs. 
+
+Unsurprisingly, when considering only the injury history to specific body parts, we yield higher average injury durations (Figures 20 and 21) in each category of injury history severity than when we consider the total injury history of a player. The only exception to this are the 'Little-No' and 'No' Injury history categories which yield approximately the same average injury durations. 
+
+The figure which displays the most interesting trend to me thus far is Figure 20. There appears to be a visible relationship between how many injuries (injury count) a player has previously incurred to the body part they injured and the duration of the new injury. This is worth investigating further. Figure 21 also displays a similar trend with the total injury counts, but it is not as evident as the one found in Figure 20. However, it is still worth investigating as well. 
+
+In order to investigate the relationship between a player's injury count and the injury duration they incurred, I plotted a linear regression to see if there truly is a correlation between the two variables. Figure 22 is a scatter plot of the body part's injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. The 'p' value in the legend of the graph is the Pearson correlation coefficient, and the equation just below it is the calculated regression equation (where x is body part's injury count). Figure 23 is the summary report of the aforementioned linear regression.
+
+
+**Fig. 22**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 22")
+
+
+**Fig. 23**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20results.PNG "Figure 23")
+
+#########Edit this 
+As you can see from above, there does not appear to be a strong correlation at all between the two variables. The Pearson correlation coefficient is incredibly low at 0.077. Additionally, the p-value is also incredibly low at 0.1% (which is well below the 5% cut off rate) and the Adjusted R-squared value is at 0.005, which is far too close to 0. As a result, I can conclude that there doesn't appear to be a visible linear relationship between the body part's injury count and the injury duration. 
+
+
+Just to be certain that there was no linear relationship between the injury count and injury duration, I also investigated the relationship between the player's total injury count and the duration of their injury. Figure 24 is a scatter plot of the player's total injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. Figure 24 is the summary report of the linear regression in Figure 25. 
+
+
+**Fig. 24**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20plot.png "Figure 24")
+
+
+**Fig. 25**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20Results.PNG "Figure 25")
+
+The graph indicates that there is no correlation between the player's total injury count and the injury duration. The Pearson correlation coefficient is only 0.008. 
 
 ## Conclusion
 
