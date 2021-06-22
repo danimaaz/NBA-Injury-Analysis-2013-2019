@@ -1,4 +1,4 @@
-# NBA injury Analysis 2013-2019
+# NBA Injury Analysis 2013-2019
 
 ## Introduction
 Recently, NBA personalities have complained that the players in the league are 'overworked' and that that results in preventable injuries. In this report, I sought out to investigate whether or not there is any truth to that general sentiment. Additionally, I also explored whether or not the number of games played in the NBA regular season is necessary for determining the playoff picture, and if reducing the number of games would be a feasible solution to players feeling 'overworked'. 
@@ -51,7 +51,7 @@ The data-cleaning process for both the 1992-2013 and  2013-2019 datasets consist
 **•** Dropping all columns with unnecessary information
 
 Once I was done the above steps for the 1992-2013 data, I was ready to create a new ' Player Injury History' dataframe that would be used in the final analysis. 
-The player injury history would specify which how many times the player has injured each body part as well as the cumulative number of days a player was out due to an injury on said body part. 
+The player injury history would specify which how many times the player has injured each body part (their 'injury count') as well as the cumulative number of days a player was out due to an injury on said body part (their cumulative injury durations). 
 
 Once I was finished compiling the player injury history data, I was ready to merge it with the cleaned 2013-2019 injury data. The player injury history dataset was continuously updated to consider the new injuries players incurred as well as the new players that entered the league after 2013.
 
@@ -156,7 +156,17 @@ Surprisingly, there doesn't appear to be a large disparity between the average A
 
 When I calculated the correlation coefficient of a player's ACWR vs their injury duration, it came up to an abysmal 0.046. In other words, there doesn't appear to be a strong correlation between a player's ACWR and their injury duration. 
 
-Since nothing seemed to be working, I decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 12 illustrates the number of injuries for each body part in each ACWR range. 
+Since there doesn't appear to be any visible relationship between a player's ACWR and their injury duration, I decided to investigate whether or not different body part's were more prone to getting injured if they had higher ACWRs. Figure 12 shows the average ACWR for the different injured body parts.
+
+**Fig. 12**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Average%20AWCRs%20of%20each%20body%20part.png
+png "Figure 12")
+
+The average ACWR appears to be quite consistent across each body part. This may be due to the high amount of injuries 
+
+I then decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 13 shows the number of injuries in each 'ACWR' range Figure 14 illustrates the number of injuries for each body part in each ACWR range. 
 
 **Table 2**:
 
@@ -166,42 +176,65 @@ Since nothing seemed to be working, I decided to see whether or not high ACWRs c
 | Average            |  0.5 - 1.5      |
 | High               |  1.5 +          |
 
-**Fig. 12**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Parts%20for%20players%20w%20COMBINED%20ACWRs.png "Figure 12")
-
-From above, the ACWR graphs look extremely similar for each 'range' of the ACWR. In Figure 13, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
 
 **Fig. 13**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Duration%20by%20body%20part%20-%20COMBINED%20ACWR.png "Figure 13")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Number%20of%20injuries%20based%20on%20ACWR%20Range.png "Figure 13")
+
+
+
+
+**Fig. 14**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Parts%20for%20players%20w%20COMBINED%20ACWRs.png "Figure 14")
+
+From above, the ACWR graphs look extremely similar for each 'range' of the ACWR. In Figure 13, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
+
+**Fig. 15**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Duration%20by%20body%20part%20-%20COMBINED%20ACWR.png "Figure 15")
 
 In this graph, we see that high ACWRs appear to give more severe knee, lower leg and upper body injuries. Let's look at what happens if we _only_ consider knee, lower leg and upper body injuries. Will there be a trend? 
 
 
-**Fig. 14**:
+**Fig. 16**:
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20durations%20vs%20ACWR%20-%20knee%20lower%20leg%20and%20upper%20body.png "Figure 14")
 
 From the scatter plot above, there doesn't seem to be any visible correlation. The correlation coefficient between the ACWR and injury duration when we only considered these specific injuries was only 0.073. While it is still better than 0.046 correlation coefficient that I calculated when consideirng *all* injuries, it is still far too small to draw any conclusions from it. 
 
-I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figure 15 and 16 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
+I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figures 17 and 18 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
 
 
-**Fig. 15**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20history%20(duration)%20-%20COMBINED%20acwr.png "Figure 15")
 
 
 **Fig. 16**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20count%20-%20COMBINED%20acwr.png "Figure 16")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20history%20(duration)%20-%20COMBINED%20acwr.png "Figure 16")
 
+
+
+**Fig. 17**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20count%20-%20COMBINED%20acwr.png "Figure 17")
+
+
+
+It appears as if the ACWR range does not appear to make players more or less injury prone based on their injury history. That being said, Figure 17 seems to be showing an interesting trend. The vast majority of injuries tend to occur when a player has incurred injuries in the past to that affected body part. Thus, I think it is time to move on and explore the significance of injury history on players.
+
+
+### Taking a deeper look at the significance of an injury history
+
+
+Every sports fan knows how worrisome a player's injury history can be. Considering that AWCR doesn't appear to have a big impact on injuries, it is worth studying how important a player's injury history is. As previously mentioned, I considered two different types of injury histories: the total amount of time a player was out (their cumulative injury duration) and the total number of times a player was injured (their injury counts).
+
+To be even more precise, I will be considering a player's injury history to their entire body, and a player's injury history to just the affected body part. 
 
 
 
