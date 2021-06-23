@@ -177,7 +177,7 @@ To further investigate the impact of ACWR on player injuries, I decided to see w
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Average%20AWCRs%20of%20each%20body%20part.png
-png "Figure 14")
+ "Figure 14")
 
 The average ACWR appears to be quite consistent across each body part. This may be due to the high amount of injuries 
 
