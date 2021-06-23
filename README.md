@@ -302,10 +302,12 @@ In order to investigate the relationship between a player's injury count and the
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20results.PNG "Figure 23")
 
-As you can see from above, there does not appear to be a strong correlation at all between the two variables. The Pearson correlation coefficient is incredibly low at 0.077. While the p-value _is_ incredibly low at only .1% (well below the 5% significance threshold), the adjusted R-squared value is at 0.005, which is far too low to be considered a good model. Additionally,  As a result, I can conclude that there doesn't appear to be a visible linear relationship between the body part's injury count and the injury duration. 
+
+The linear regression above yielded some interesting results. While the Pearson correlation coefficient was low at 0.077, the regression model had an incredibly low p-value at 0.1%. The adjusted R-squared value was also incredibly low at 0.5%. Since the P-value was low, we can conclude that the injury count of the body part is _significant_. However, the low adjusted R-squared value indicates that our model does not explain a lot of the variation in the data. That means that when constructing other models, we should consider including the body part's injury count as a variable since it has proven to be significant. However, a model _only_ considering the body part's injury count does not appear to be enough to predict a player's injury duration. 
 
 
-Just to be certain that there was no linear relationship between the injury count and injury duration, I also investigated the relationship between the player's total injury count and the duration of their injury. Figure 24 is a scatter plot of the player's total injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. Figure 24 is the summary report of the linear regression in Figure 25. 
+
+I also investigated the relationship between the player's total injury count and the duration of their injury. Figure 24 is a scatter plot of the player's total injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. Figure 24 is the summary report of the linear regression in Figure 25. 
 
 
 **Fig. 24**:
