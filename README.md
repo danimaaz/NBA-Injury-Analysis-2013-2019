@@ -181,7 +181,7 @@ To further investigate the impact of ACWR on player injuries, I decided to see w
 
 The average ACWR appears to be quite consistent across each body part. This may be due to the high amount of injuries 
 
-I then decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 15 shows the number of injuries in each 'ACWR' range Figure 16 illustrates the number of injuries for each body part in each ACWR range. 
+I then decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 15 shows the number of injuries in each 'ACWR' range, while Figure 16 illustrates the number of injuries for each body part in each ACWR range. 
 
 **Table 2**:
 
@@ -229,7 +229,7 @@ In this graph, we see that high ACWRs appear to give more severe knee, lower leg
 From the linear regression model. the ACWR does not appear to have an effect on the injury durations of knee, upper body and lower leg injuries. The correlation coefficient between the ACWR and injury duration when we only considered these specific injuries was only 0.073. While it was better that the 0.046 correlation coefficient we found when considering _all_ injuries, the p-value was significantly worse at 9.4% (which is well above the maximum 5% threshold), and the adjusted R-Squared value was only 0.3%. As a result, I can conlude that this linear regression model does not appear to do a good job at predicting the injury durations for knee, lower leg and upper body injuries. Additionally, the AWCR does does appear to be a significant variable for predicting the durations of the aforementioned injuries.
 
 
-I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figures 19 and 20 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
+I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figures 20 and 21 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
 
 
 
@@ -248,7 +248,7 @@ I was also curious to see if I could find any patterns between a player's injury
 
 
 
-It appears as if the ACWR range does not appear to make players more or less injury prone based on their injury history. That being said, Figure 17 seems to be showing an interesting trend. The vast majority of injuries tend to occur when a player has incurred injuries in the past to that affected body part. Thus, I think it is time to move on and explore the significance of injury history on players.
+It appears as if the ACWR range does not appear to make players more or less injury prone based on their injury history. That being said, Figure 21 seems to be showing an interesting trend. The vast majority of injuries tend to occur when a player has incurred injuries in the past to that affected body part. Thus, I think it is time to move on and explore the significance of injury history on players.
 
 
 ### Exploring significance of the significance of a player's injury history
