@@ -302,8 +302,7 @@ In order to investigate the relationship between a player's injury count and the
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20results.PNG "Figure 23")
 
-#########Edit this 
-As you can see from above, there does not appear to be a strong correlation at all between the two variables. The Pearson correlation coefficient is incredibly low at 0.077. Additionally, the p-value is also incredibly low at 0.1% (which is well below the 5% cut off rate) and the Adjusted R-squared value is at 0.005, which is far too close to 0. As a result, I can conclude that there doesn't appear to be a visible linear relationship between the body part's injury count and the injury duration. 
+As you can see from above, there does not appear to be a strong correlation at all between the two variables. The Pearson correlation coefficient is incredibly low at 0.077. While the p-value _is_ incredibly low at only .1% (well below the 5% significance threshold), the adjusted R-squared value is at 0.005, which is far too low to be considered a good model. Additionally,  As a result, I can conclude that there doesn't appear to be a visible linear relationship between the body part's injury count and the injury duration. 
 
 
 Just to be certain that there was no linear relationship between the injury count and injury duration, I also investigated the relationship between the player's total injury count and the duration of their injury. Figure 24 is a scatter plot of the player's total injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. Figure 24 is the summary report of the linear regression in Figure 25. 
@@ -320,7 +319,7 @@ Just to be certain that there was no linear relationship between the injury coun
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20Results.PNG "Figure 25")
 
-The graph indicates that there is no correlation between the player's total injury count and the injury duration. The Pearson correlation coefficient is only 0.008. 
+The graph indicates that there is no correlation between the player's total injury count and the injury duration. The Pearson correlation coefficient is only 0.008. Furthermore, the linear model's p-value is 74.6%, which is well above the 5% threshold. Finally, the adjusted R-Score is at -.001, which further emphasizes the point that the linear model is _not_ a good fit. So I can conclude that there appears to be no linear relationship between a player's total injury count and their injury duration.  
 
 ## Conclusion
 
