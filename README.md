@@ -139,11 +139,9 @@ It appears that foot and knee injuries are prominent in all the different catego
 
 ## Analysis
 
-From my hypothesis, I thought that there would be a strong correlation between the number of injuries per season and the average ACWR of the injured players. However, the graphs from Figure 3 and Figure 5 made me pessimistic that I would find a strong correlation. When calculating the correlation (link to the code [here](post the link to the EDA code)), the correlation coefficient was only  ~ -0.114. Not only was the correlation value close to 0 (signifying that it is a poor predictior), it was also negative! This indicates that I should probably take a deeper dive into what may be causing this increase injuries.
-
 ### Taking a deeper look at the ACWR
 
-While the ACWR doesn't appear to have a strong correlation with the number of injuries, it is interesting to look at whether or not the ACWR plays a role in how serious an injury is. Below is a graph showing the average ACWRs of different injury severities. 
+I initially hypothesized that AWCR would play a major role in injury severity. In order to investigate that further, I had to investigate if the ACWR plays a role in how serious an injury is. And whether or not plays a _significant_ role in how serious an injury is. To start off the analysis, Figure 9 shows the average ACWRs of different injury severities. 
 
 
 **Fig. 9**:
@@ -151,7 +149,7 @@ While the ACWR doesn't appear to have a strong correlation with the number of in
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/inj%20severity%20vs%20average%20acwr.png "Figure 9")
 
-Surprisingly, there doesn't appear to be a large disparity between the average ACWRs of each injury severity category. I would imagine that players with higher ACWRs would tend to have more 'severe' injuries. To investigate this further, I also plotted a scatterplot of the ACWRs of players and their respective injury durations. 
+Surprisingly, there doesn't appear to be a large disparity between the average ACWRs of each injury severity category. This contradicts my initial hypothesis as I thought that players with higher ACWRs would tend to have more 'severe' injuries. To investigate this further, I also plotted a scatterplot of the ACWRs of players and their respective injury durations. 
 
 **Fig. 10**:
 
@@ -209,7 +207,7 @@ I then decided to see whether or not high ACWRs caused particular body parts to 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Parts%20for%20players%20w%20COMBINED%20ACWRs.png "Figure 15")
 
-From above, the ACWR graphs look extremely similar for each 'range' of the ACWR. In Figure 16, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
+From above, the ACWR graphs look extremely similar for each range of the ACWR. In Figure 16, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
 
 **Fig. 16**:
 
@@ -230,11 +228,10 @@ In this graph, we see that high ACWRs appear to give more severe knee, lower leg
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/only%20kneeupperbodylowerleg%20inj%20-%20AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Summary.PNG "Figure 18")
 
 
-From the linear regression model. the ACWR does not appear to have an effect on the injury durations of knee, upper body and lower leg injuries. The correlation coefficient between the ACWR and injury duration when we only considered these specific injuries was only 0.073. While it was better that the 0.046 correlation coefficient we found when considering _all_ injuries, the p-value was significantly worse at 9.4% (which is well above the maximum 5% threshold), and the adjusted R-Squared value was only 0.3%. As a result, I can conlude that this linear regression model does not appear to do a good job at predicting the injury durations for knee, lower leg and upper body injuries. Additionally, the AWCR does does appear to be a significant variable for predicting the durations of the aforementioned injuries.
+From the linear regression model. the ACWR does not appear to have an effect on the injury durations of knee, upper body and lower leg injuries. The correlation coefficient between the ACWR and injury duration when we only considered these specific injuries was only 0.073. While it was better that the 0.046 correlation coefficient we found when considering _all_ injuries, the p-value was significantly worse at 9.4% (which is well above the maximum 5% threshold), and the adjusted R-Squared value was only 0.3%. As a result, I can conlude that this linear regression model does not appear to do a good job at predicting the injury durations for knee, lower leg and upper body injuries. Additionally, the AWCR does not appear to be a significant variable for predicting the durations of the aforementioned injuries.
 
 
 I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figures 19 and 20 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
-
 
 
 
