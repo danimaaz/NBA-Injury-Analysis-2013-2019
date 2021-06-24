@@ -36,7 +36,7 @@ Below is a screenshot of how the data looked like once I scraped it.
 As you can see, there are only 5 columns: Date, Team, Acquired, Relinquished and Notes. 
 The Acquired column indicated which player was being _removed_ from the injury list on that date, whereas the Relinquished column indicated which player was being _added_ to the injury list on that date. The Notes column indicated why a player was being placed on the injury list. 
 
-Scrolling through the data, there were quite a problems with it. Firstly, many players were 'Placed on the Injury List' (or 'Relinquished') but they were never removed from it. Additionally, a lot of the data did not specify why a player was being placed on the injury list. I suspect that a lot of teams would use the injury list to have their players 'rest' but not specify it.
+Scrolling through the data, there were quite a few problems with it. Firstly, many players were 'Placed on the Injury List' (or 'Relinquished') but they were never removed from it. Additionally, a lot of the data did not specify why a player was being placed on the injury list. I suspect that a lot of teams would use the injury list to have their players 'rest' but not specify it.
 
 Another major problem was that players who were listed as 'out for the season' were often never activated from the injury list again, however they did continue playing NBA basketball the following season. I had to figure out a way to solve that since the most severe injuries are often season-ending. 
 
