@@ -44,12 +44,25 @@ Another major problem was that players who were listed as 'out for the season' w
 The data-cleaning process for both the 1992-2013 and  2013-2019 datasets consisted of:
 
 **•** Determine which season an injury took place
+
+
 **•** Ensuring that the names in the 'Relinquished' and 'Acquired' columns were consistent of those used on the NBA website
+
+
 **•** Adding 'Acquired' rows for players who were listed as 'out for the season'
+
+
 **•** Dropping rows with irrelevant data (i.e. games missed due to rest) or missing data (ex: instances where the player 'activated' from the injury list)
+
+
 **•** Determining the duration of each injury
+
+
 **•** Categorizing each injury on which part of the body was affected
+
+
 **•** Dropping all columns with unnecessary information
+
 
 Once I was done the above steps for the 1992-2013 data, I was ready to create a new ' Player Injury History' dataframe that would be used in the final analysis. 
 The player injury history would specify which how many times the player has injured each body part (their 'injury count') as well as the cumulative number of days a player was out due to an injury on said body part (their cumulative injury durations). 
