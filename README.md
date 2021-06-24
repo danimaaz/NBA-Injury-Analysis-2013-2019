@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Recently, NBA personalities have complained that the players in the league are 'overworked' and that that is the cause of more serious injuries. In this report, I sought out to investigate whether or not there is any truth to that general sentiment. Do 'overworked' players tend to have more severe injuries? Additionally, I also explored whether or not the number of games played in the NBA regular season is necessary for determining the playoff picture, and if reducing the number of games would be a feasible solution to players feeling 'overworked'. 
+Recently, NBA personalities have complained that the players in the league are 'overworked' and that that is the cause of more serious injuries. In this report, I sought out to investigate whether or not there is any truth to that general sentiment. Do overworked players tend to have more severe injuries? Additionally, I also explored different potential scheduling changes the NBA can make to prevent players from feeling overworked.
 
 
 
