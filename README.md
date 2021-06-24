@@ -1,7 +1,8 @@
 # NBA Injury Analysis 2013-2019
 
 ## Introduction
-Recently, NBA personalities have complained that the players in the league are 'overworked' and that that results in preventable injuries. In this report, I sought out to investigate whether or not there is any truth to that general sentiment. Additionally, I also explored whether or not the number of games played in the NBA regular season is necessary for determining the playoff picture, and if reducing the number of games would be a feasible solution to players feeling 'overworked'. 
+
+Recently, NBA personalities have complained that the players in the league are 'overworked' and that that is the cause of more serious injuries. In this report, I sought out to investigate whether or not there is any truth to that general sentiment. Do 'overworked' players tend to have more severe injuries? Additionally, I also explored whether or not the number of games played in the NBA regular season is necessary for determining the playoff picture, and if reducing the number of games would be a feasible solution to players feeling 'overworked'. 
 
 
 
@@ -262,7 +263,7 @@ To be even more precise, I will be considering a player's injury history to thei
 
 | Injury History Severity  | Injury History (days) |
 | -------------------------|:---------------------:|
-| Little-No                 | 0-28                  |
+| Little-No                 | 0-28                 |
 | Mild                     | 28-90                 |
 | Moderate                 | 90-180                |
 | Serious                  | 180+                  |
@@ -335,13 +336,13 @@ I also investigated the relationship between the player's total injury count and
 **Fig. 28**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20plot.png "Figure 24")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20plot.png "Figure 28")
 
 
 **Fig. 29**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20Results.PNG "Figure 25")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20Results.PNG "Figure 29")
 
 The graph indicates that there is no correlation between the player's total injury count and the injury duration. The Pearson correlation coefficient is only 0.008. Furthermore, the linear model's p-value is 74.6%, which is well above the 5% threshold. Finally, the adjusted R-Score is at -.001, which further emphasizes the point that the linear model is _not_ a good fit. So I can conclude that there appears to be no linear relationship between a player's total injury count and their injury duration.
 
@@ -350,9 +351,147 @@ Overall, the only 'significant' predictor we have found so far in predicting inj
 
 ### Investigating the impacts of distance traveled by players in-game
 
+Finally, I decided to investigate the impact of the distance traveled by players on the severity of their injuries. I quickly wanted to see how much the average distance traveled by players has changed over the past few seasons. Figure 30 details the average distance traveled by all NBA players immediately prior to injury (in miles). 
+
+
+**Fig. 30**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/avg%20distance%20traveled%20per%20season%20-%20combined.png
+ "Figure 30")
+
+From the above graph, you can see that there does not appear to be a _large_ difference between the average distance traveled between the seasons (for both the 7 and 28 day averages). However, the 2018-19 season does appear to have the largest average distance traveled for both the 7 and 28 day average distances. Coincidentally, this is also the year that the NBA viewed the most injuries in the regular season from our sample size (see Figure 30). 
+
+This marginal increase in distance traveled can be explained by the NBA's pace of play increasing drastically over the past few years. It is possible that the acute-chronic workload ratio has remained the same over the past few years simply because players are expected to run more _all_ the time. So, I want to see if the players who incurred more severe injuries are running more on average. Figure 31 contains the scatter plots of the average distance traveled by a player immediately prior to an injury (both the 7 day and 28 day averages) compared to their injury duration. 
+
+**Fig. 31**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Scatter%20plot%20-%20COMBINED%20dayavg%20distance%20traveled%20vs%20injury%20duration.png "Figure 31")
+
+From the above scatter plot, there does not seem to be a visible relationship between the average distance traveled and the injury durations. In order to investigate this further, I plotted the average distance traveled for each category of injury severity (the categories are broken down in Table 1).
+
+
+**Fig. 32**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/injury%20severity%20vs%20avg%20distance%20traveled%20-%20bar%20-%20combined.png "Figure 32")
+
+From the above bar graphs, there does not appear to be a significant difference in the averages between each injury severity category. However, mild injuries appear to have larger average distances traveled over the past 28 days than the other injury categories. To check whether or not there was a correlation between injury severity and average distance traveled, I ran a linear regression to see how well the average distance traveled can predict injury severity. Figures 32 and 33 show the plot and the summary of the linear regression ran when comparing the 7 day average of the distance traveled and the injury duration. 
+
+
+**Fig. 33**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(7%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 33")
+
+
+
+**Fig. 33**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(7%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20summary.PNG "Figure 34")
+
+
+From the above figures, you can see that there is little to no correlation between the two variables. The Pearson correlation coefficient was low at -0.042. Additionally, the p-value came out to be 7.8%, which is well above the maximum threshold of 5%. And finally, the adjusted R-squared value came in at only 0.001. As a result, I can conclude that this is not a good linear regression model and that the average distance traveled over the past 7 days is not a significant variable when it comes to predicting the total injury duration.
+
+I ran the same linear regression with the average distance traveled over 28 days to see whether or not there is more of a relationship between the two variables.
+
+**Fig. 34**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(28%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 34")
+
+
+
+**Fig. 35**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(28%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20summary.PNG "Figure 35")
+
+
+From the above graphs, you can see that the results we yielded with the 28 day average are similar to the ones we got with the 7 day average. The Pearson correlation coefficient is low at -0.031. The p-value was 18.7%, which is much higher than the maximum threshold of 5%. Finally, the adjusted R-Squared value rounded out to be 0.00. Overall, I can come to the same conclusion for this model as I did for the model using the 7 day average. This is not a suitable model to predict the injury duration of the player and the average distance traveled over the past 28 days is not a significant variable when predicting a palyer's injury duration. 
+
+
+### Wrapping it all up
+
+From our analysis so far, the only variable that proved to be significant in predicting a player's overall injury duration was the amount of injuries the player has previous incurred to that body part (their body part's injury count). That being said, the ACWR ratio was almost considered significant since its' p-value came in at only 5.3%. Before reaching a conclusion in my experiment, I decided to run a multiple linear regression to see how well a model considering both the player's ACWR _and_ body part injury count can predict a player's injury duration. Figure 36 is the summary of this model. 
+
+
+**Fig. 36**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/wrapping%20it%20all%20up/MultipleLinearRegression.PNG
+ "Figure 36")
+
+From above, this linear model still does not appear to be a good one. While the p-value of the body part's injury count is still incredibly low at 0.1%, the p-value of the AWCR still remains slightly above the 5% threshold at 5.7%. Additionally, the adjusted R-squared value is still incredibly low at 0.008. Overall, the model does not appear to predict the duration of injuries particularly well. However, I can conclude that the body part's injury count appears to be a significant factor in predicting how severe an injury is.  
+
+
+
+While I did not succeed in finding a successful model to build injury duration, I still wanted to see how feasible alternations to the NBA schedule would be. Currently, the NBA has an 82 game schedule (the 2019-20 and 2020-21 seasons were shortened due to Covid). Each NBA conference has 15 teams, and each NBA division has 5 teams, all teams within a division share the same conference as well. In the 82 game schedule, a team faces teams within their conference 4 times a year (amounting to a total of 16 games played within their division). They then play the remaining teams  teams within their conference 3-4 times a year (amounting to a total of 36 games played within their conference, excluding their division). Finally, they play the opposing conference 2 times a year during the regular season (amounting to a total of 30 games). 
+
+The alternatives that I think may be viable for the NBA are the following:
+
+1. The 58 game season
+
+⋅⋅⋅ In the 58 game season, teams would play each team in the league (29 opposing teams) twice, once at home, and once away.
+
+
+2. The 62 game season
+
+⋅⋅⋅ In the 62 game season, teams would play teams within their division 3 times a year (with at least one game at home, and one game away). They would play the remaining 25 teams twice a year, with one home and one away game. 
+
+
+2. The 72 game season
+
+⋅⋅⋅ In the 72 game season is what the NBA implemented for the 2020-21 Regular Season. Each team would play teams within their conference 3 times a year (with at least one game at home and one game away). They would play the opposing conference only twice a year, with one home game and one away game.
+
+
+To test how feasible these schedule alternations are, I calculated what would the NBA Regular Season standings would be for each model for the seasons from 2013 until 2019. I then calculated what % of the playoff teams that made the playoffs in my alternate schedule made the playoffs under the regular 82 game season. The % of teams that made the playoffs in both the alternate schedule and the regular 82 game schedule will be considered how 'accurate' the model was. I did not consider how accurate the models predicted the team's placement on the standings. I only considered whether the model was good at predicting which teams are / aren't playoff teams. To determine tie-breakers, I used the NBA rules for tie-breakers that can be found [here](https://ak-static-int.nba.com/wp-content/uploads/sites/2/2017/06/NBA_Tiebreaker_Procedures.pdf).
+
+Below is a graph depicting how accurate the model was for each season from 2013. Table 5 details the average accuracy of each model.
+
+
+**Fig. 36**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/wrapping%20it%20all%20up/MultipleLinearRegression.PNG
+ "Figure 36")
+
+
+
+
+**Table 5**:                                                                              
+
+| Alternate Regular Season Model  | Average Accuracy (%) |
+| --------------------------------|:--------------------:|
+| 58 Game Model                   | 0-28                 |
+| 62 Game Model                   | 28-90                |
+| 72 Game Model                   | 90-180               |
+
+
+
+Overall, all the models appear to be fairly accurate. Personally, I think the model that would make the most sense to implement would be the 62 game model. That way, conferences and divisions are still relevant, and the players play 20 fewer games per year (which is approximately 25% less as opposed to the regular season). While my model did not find a direct link between workload and injury severity, it is still very plausible that increased workload could increase the _number_ of injuries per year, so these alternatives may be useful for the NBA to consider in order to prevent injuries. 
+
+## Limitations
+
+My study had many limitations. Firstly, the 'average distance traveled' data I gathered was not entirely accurate as I have no data as to how much a player trains in practice/outside of the NBA. It is very possible that players exert a lot of effort off the court which causes them to incur serious injuries. My calculations of the ACWR assumed that players only exerted effort on the court, which is simply unrealistic. Additionally, only considering the distance traveled by a player isn't the most accurate representation of how hard a player works. Certain players may partake in other effort exerting activities on the court (example: dunking a ball) which is not considered. Given that I only used publicly available data, the experiment was limited in its accuracy.
+
+Another major limitation I had was the fact that the NBA only started to record the distances traveled by players in 2013. It would have been more useful if I conducted an experiment determining whether or not the acute-chronic workload ratio or the average distance traveled by players were somehow correlated with the _number_ of injuries per season. Since I only had data since 2013, this would not have been feasible since I was limited to less than 10 seasons worth of data. Figure 30 did show that NBA players the average distance traveled by players immediately before incurring an injury has increased over the past few years. Similarly, we have also seen an increase in the number of injuries that players have incurred during that same timeframe (Figure 3). Thus, this is a topic worth investigating in the future as we get a better sample size.
+
+Finally, another error that my model had was that I did not compare the ACWRs/average distances traveled of the injured players to the players who were not injured during that same timeframe. It would have been useful to see how much players who _do not_ get injured work when compared to the players that _do_ get injured. It is possible that players who do not get injured get limited playing time.
+
+Finally, I did not consider other potentially important factors when predicting the severity of injuries. In the future, it would be useful to also see how a player's height and age correlate to the severity of the injuries. Also, it may have been useful to also include the injuries players have incurred prior to entering the NBA (ex: NCAA, high school basketball, Euroleague, etc). The project was constructed on the assumption that players entered the NBA with no prior injury history, which is a strong and unrealistic assumption. 
 
 
 
 ## Conclusion
 
-## Limitations
+Overall, the only significant variable I found that had an effect on injury duration was the number of previous injuries a player has incurred to that body part. In my hypothesis, I believed that the acute-chronic workload ratio would have a significant effect on injury severity. However, it appears that that is not the case. One reason for this may be that teams already keep track of a player's ACWR and make sure that a player does not play so much as to become 'overworked'. 
+
+The study had a lot of limitations, and in future updates to the project I will try to investigate other causes that might increase the severity of injuries (ex: height). Additionally, I think it is also important to investigate what causes an _increased_ number of injuries. A majority of the injuries in the NBA knocks that put a player out for 1-2 weeks. It's very likely that those knocks may be a result of the increasing physical demands an NBA player has to meet. 
+
+
+
+
+
