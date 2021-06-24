@@ -86,7 +86,7 @@ Before Jumping into the analysis, let's take a quick glance at the data to see i
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Number%20of%20Injuries%20per%20Szn.png "Figure 3")
 
-From this graph here, we can see that injuries have been increasing since 2013. The 2013-14 season only had a grand total of 245 injuries, whereas the 2018-19 season had a total of 547 injuries. That is a significant increase that deserves to be investigated. Let's look at the severity of injuries per season as well. Below is how I classified the severity of each injury (based on the total number of days out): 
+From this graph here, we can see that injuries have been increasing since 2013. The 2013-14 season only had a grand total of 245 injuries, whereas the 2018-19 season had a total of 547 injuries. That is a significant increase that deserves to be investigated. Let's look at the severity of injuries per season as well (Figure 4). Table 1 details how I classified the severity of each injury (based on the total number of days out): 
 
 **Table 1**:
 
@@ -113,39 +113,29 @@ As this project is trying to see if players are getting 'overworked', let's also
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Uncombined%20Images/Average%20AWCN%20of%20injured%20players%20by%20season.png "Figure 5")
 
-It appears that the ACWR of injuries has remained relatively consistent across the years, each year appears to have an average ACWR that is close to 1. To understand the consistency of the ACWR over the seasons better, let's also take a look at both the 7 and 28 day averages of the distance traveled by players in game. My initial hypothesis mentioned that it seems like NBA players are working more than they did in previous years.
+It appears that the ACWR of injuries has remained relatively consistent across the years, each year appears to have an average ACWR that is close to 1. Next, let's also take a look at which body parts tend to be injured the most in the NBA. 
+
 
 **Fig. 6**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Uncombined%20Images/Frequency%20of%20Injuries%20by%20body%20part.png "Figure 6")
-
-The average distances traveled by NBA players (immediately prior to injuries) have remained relatively consistent since 2013-14. This contradicts my initial hypothesis that the sharp increase in injuries can be attributed by the higher demands that player have today.  
-
-
-Let's also take a look at which body parts tend to be injured the most in the NBA. 
-
-
-**Fig. 7**:
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Uncombined%20Images/Frequency%20of%20Injuries%20by%20body%20part.png "Figure 7")
 
 It appears that foot, knee and upper leg injuries are by far the most common injuries in the NBA. Let's see which body part tends to incur the most severe injuries. 
 
-**Fig. 8**:
+**Fig. 7**:
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Average%20Injury%20duration%20per%20body%20part.png "Figure 8")
 
 This graph shows that a total of 6 body parts have an average injury duration that is over 30 days. Knee injuries tend to be the most severe injuries on average, with an average knee injury lasting ~49 days. In order to explore this further, let's break down the injuries by their severity and body parts alike. 
 
-**Fig. 9**:
+**Fig. 8**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Body%20Parts%20affected%20by%20Injuries%20-%20all%20categories.png "Figure 9")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Basic%20EDA%20-%20Images%20%26%20Graphs/Body%20Parts%20affected%20by%20Injuries%20-%20all%20categories.png "Figure 8")
 
-It appears that foot and knee injuries are prominent in all the different categories of injuries. Figure 9 shows us that the average injury duration for knee and foot injuries (shown in Figure 8) are dragged down by the fact that there is a huge amount mild foot and knee injuries. 
+It appears that foot and knee injuries are prominent in all the different categories of injuries. Figure 8 shows us that the average injury duration for knee and foot injuries (shown in Figure 7) are dragged down by the fact that there is a huge amount mild foot and knee injuries. 
 
 ## Analysis
 
@@ -156,46 +146,46 @@ From my hypothesis, I thought that there would be a strong correlation between t
 While the ACWR doesn't appear to have a strong correlation with the number of injuries, it is interesting to look at whether or not the ACWR plays a role in how serious an injury is. Below is a graph showing the average ACWRs of different injury severities. 
 
 
+**Fig. 9**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/inj%20severity%20vs%20average%20acwr.png "Figure 9")
+
+Surprisingly, there doesn't appear to be a large disparity between the average ACWRs of each injury severity category. I would imagine that players with higher ACWRs would tend to have more 'severe' injuries. To investigate this further, I also plotted a scatterplot of the ACWRs of players and their respective injury durations. 
+
 **Fig. 10**:
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/inj%20severity%20vs%20average%20acwr.png "Figure 10")
 
-Surprisingly, there doesn't appear to be a large disparity between the average ACWRs of each injury severity category. I would imagine that players with higher ACWRs would tend to have more 'severe' injuries. To investigate this further, I also plotted a scatterplot of the ACWRs of players and their respective injury durations. 
+When I calculated the correlation coefficient of a player's ACWR vs their injury duration, it came up to a very low 0.046. In other words, there doesn't appear to be a strong correlation between a player's ACWR and their injury duration. For good measure, I decided to run a linear regression to see if AWCR is a good predictor in how severe an injury is. This regression is detailed in Figures 11 and 12, Figure 11 is the plot of the linear regression and Figure 12 is its summary. The legend details the Pearson Correlation Coefficient between the two variables as well as the regression equation. 
 
 **Fig. 11**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/inj%20severity%20vs%20average%20acwr.png "Figure 11")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Plot.png "Figure 11")
 
-When I calculated the correlation coefficient of a player's ACWR vs their injury duration, it came up to a very low 0.046. In other words, there doesn't appear to be a strong correlation between a player's ACWR and their injury duration. For good measure, I decided to run a linear regression to see if AWCR is a good predictor in how severe an injury is. This regression is detailed in Figures 12 and 13, Figure 12 is the plot of the linear regression and Figure 13 is its summary. The legend details the Pearson Correlation Coefficient between the two variables as well as the regression equation. 
 
 **Fig. 12**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Plot.png "Figure 12")
-
-
-**Fig. 13**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Summary.PNG "Figure 13")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Summary.PNG "Figure 12")
 
 
 At first glance, the model doesn't appear to be significant at all. The adjusted R-squared value is incredibly low at .2%. Similarly, the Pearson correlation coefficient is very low at only 0.046. That being said, the model's p-value is surprisingly low at 5.3%. While this is above the maximum threshold of 5%, it is important to note down how close the p-value was to being accepted. Overall, the model does not appear to be good, and the ACWR ratio does not appear to be a significant variable in predicting injury duration. However, since the ACWR was barely above the maximum accepted threshold, it may be useful to investigate it further as this project progresses. 
 
 
-To further investigate the impact of ACWR on player injuries, I decided to see whether or not different body part's were more prone to getting injured if they had higher ACWRs. Figure 14 shows the average ACWR for the different injured body parts.
+To further investigate the impact of ACWR on player injuries, I decided to see whether or not different body part's were more prone to getting injured if they had higher ACWRs. Figure 13 shows the average ACWR for the different injured body parts.
 
-**Fig. 14**:
+**Fig. 13**:
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Average%20AWCRs%20of%20each%20body%20part.png
- "Figure 14")
+ "Figure 13")
 
 The average ACWR appears to be quite consistent across each body part. This may be due to the high amount of injuries 
 
-I then decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 15 shows the number of injuries in each 'ACWR' range, while Figure 16 illustrates the number of injuries for each body part in each ACWR range. 
+I then decided to see whether or not high ACWRs caused particular body parts to be injury prone. I split the ACWRs into 3 groups illustrated in Table 2. Figure 14 shows the number of injuries in each 'ACWR' range, while Figure 15 illustrates the number of injuries for each body part in each ACWR range. 
 
 **Table 2**:
 
@@ -206,63 +196,63 @@ I then decided to see whether or not high ACWRs caused particular body parts to 
 | High               |  1.5 +          |
 
 
+**Fig. 14**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Number%20of%20injuries%20based%20on%20ACWR%20Range.png "Figure 14")
+
+
+
+
 **Fig. 15**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Number%20of%20injuries%20based%20on%20ACWR%20Range.png "Figure 15")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Parts%20for%20players%20w%20COMBINED%20ACWRs.png "Figure 15")
 
-
-
+From above, the ACWR graphs look extremely similar for each 'range' of the ACWR. In Figure 16, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
 
 **Fig. 16**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Parts%20for%20players%20w%20COMBINED%20ACWRs.png "Figure 16")
-
-From above, the ACWR graphs look extremely similar for each 'range' of the ACWR. In Figure 17, I explore what happens if we also look at the average injury duration per body part depending on the ACWR.
-
-**Fig. 17**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Duration%20by%20body%20part%20-%20COMBINED%20ACWR.png "Figure 17")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/Injury%20Duration%20by%20body%20part%20-%20COMBINED%20ACWR.png "Figure 16")
 
 In this graph, we see that high ACWRs appear to give more severe knee, lower leg and upper body injuries. Let's look at what happens if we _only_ consider knee, lower leg and upper body injuries. Will there be a trend? I ran a linear regression model to find out. 
 
 
+**Fig. 17**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/only%20kneeupperbodylowerleg%20inj%20-%20AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Plot.PNG "Figure 17")
+
 **Fig. 18**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/only%20kneeupperbodylowerleg%20inj%20-%20AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Plot.PNG "Figure 18")
-
-**Fig. 19**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/only%20kneeupperbodylowerleg%20inj%20-%20AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Summary.PNG "Figure 19")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/only%20kneeupperbodylowerleg%20inj%20-%20AWCR%20vs%20Injury%20Duration%20-%20Linear%20Regression%20Summary.PNG "Figure 18")
 
 
 From the linear regression model. the ACWR does not appear to have an effect on the injury durations of knee, upper body and lower leg injuries. The correlation coefficient between the ACWR and injury duration when we only considered these specific injuries was only 0.073. While it was better that the 0.046 correlation coefficient we found when considering _all_ injuries, the p-value was significantly worse at 9.4% (which is well above the maximum 5% threshold), and the adjusted R-Squared value was only 0.3%. As a result, I can conlude that this linear regression model does not appear to do a good job at predicting the injury durations for knee, lower leg and upper body injuries. Additionally, the AWCR does does appear to be a significant variable for predicting the durations of the aforementioned injuries.
 
 
-I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figures 20 and 21 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
+I was also curious to see if I could find any patterns between a player's injury history and their AWCR. I would assume that player's who incurred injuries with lower ACWRs tend to have more serious injury histories. Whereas players with high ACWRs would have less serious injury histories (as their injury was primarily caused by being overworked). Figures 19 and 20 show the different types of injury histories that player's had for the low, average and high AWCR groups. 
 
+
+
+
+**Fig. 19**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20history%20(duration)%20-%20COMBINED%20acwr.png "Figure 19")
 
 
 
 **Fig. 20**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20history%20(duration)%20-%20COMBINED%20acwr.png "Figure 20")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20count%20-%20COMBINED%20acwr.png "Figure 20")
 
 
 
-**Fig. 21**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/ACWR-graphs/number%20of%20injuries%20vs%20body%20part's%20injury%20count%20-%20COMBINED%20acwr.png "Figure 21")
-
-
-
-It appears as if the ACWR range does not appear to make players more or less injury prone based on their injury history. That being said, Figure 21 seems to be showing an interesting trend. The vast majority of injuries tend to occur when a player has incurred injuries in the past to that affected body part. Thus, I think it is time to move on and explore the significance of injury history on players.
+It appears as if the ACWR range does not appear to make players more or less injury prone based on their injury history. That being said, Figure 20 seems to be showing an interesting trend. The vast majority of injuries tend to occur when a player has incurred injuries in the past to that affected body part. Thus, I think it is time to move on and explore the significance of injury history on players.
 
 
 ### Exploring significance of the significance of a player's injury history
@@ -292,70 +282,70 @@ To be even more precise, I will be considering a player's injury history to thei
 | Serious                  | 5+                     |
 
 
-In Figures 22 and 23, I broke down the number of injuries in each category of injury history severity. Figure 22 focuses only on the player's injury history to that specific body part. Whereas Figure 23 considers the player's _total_ injury history (all body parts).  
+In Figures 21 and 22, I broke down the number of injuries in each category of injury history severity. Figure 21 focuses only on the player's injury history to that specific body part. Whereas Figure 22 considers the player's _total_ injury history (all body parts).  
+
+**Fig. 21**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/num%20of%20inj%20based%20on%20body%20part%20COMBINED.png "Figure 21")
 
 **Fig. 22**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/num%20of%20inj%20based%20on%20body%20part%20COMBINED.png "Figure 22")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/num%20of%20injuries%20based%20on%20total%20COMBINED.png "Figure 22")
+
+
+In Figures 23 and 24, I break down the average injury duration depending on the category of the player's injury history severity. Figure 23 focuses only on the player's injury history to that specific body part. Whereas Figure 24 considers the player's _total_ injury history (all body parts).  
+
 
 **Fig. 23**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/num%20of%20injuries%20based%20on%20total%20COMBINED.png "Figure 23")
-
-
-In Figures 24 and 25, I break down the average injury duration depending on the category of the player's injury history severity. Figure 20 focuses only on the player's injury history to that specific body part. Whereas Figure 21 considers the player's _total_ injury history (all body parts).  
-
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Avg%20Duration%20based%20on%20body%20part%20COMBINED.png "Figure 23")
 
 **Fig. 24**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Avg%20Duration%20based%20on%20body%20part%20COMBINED.png "Figure 24")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Avg%20Duration%20based%20on%20total%20COMBINED.png "Figure 24")
+
+As you can see from the above graphs, there are pretty notable differences between the 'types' of injury histories we use. More specifically, the 'Mild' categories in both the 'count' and 'duration' versions of the injury histories are defined differently. The 'Mild' category of injury histories is defined as when a player has incurred between 1-3 injuries in the 'count' version. Whereas in the 'duration' version, a 'Mild' injury history is when a player has incurred between 28-90 days of an injury. This is likely what explains the large discrepancy between the two graphs. 
+
+Unsurprisingly, when considering only the injury history to specific body parts (Figure 23), we yield higher average injury durations  in each category of injury history severity than when we consider the total injury history of a player (Figure 24). The only exception to this are the 'Little-No' and 'No' Injury history categories which yield approximately the same average injury durations. 
+
+The figure which displays the most interesting trend to me thus far is Figure 23. There appears to be a visible relationship between how many injuries (injury count) a player has previously incurred to the body part they injured and the duration of the new injury. This is worth investigating further. Figure 24 also displays a similar trend with the total injury counts, but it is not as evident as the one found in Figure 23. However, it is still worth investigating as well. 
+
+In order to investigate the relationship between a player's injury count and the injury duration they incurred, I plotted a linear regression to see if there truly is a correlation between the two variables. Figure 25 is a scatter plot of the body part's injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. The 'p' value in the legend of the graph is the Pearson correlation coefficient, and the equation just below it is the calculated regression equation (where x is body part's injury count). Figure 26 is the summary report of the aforementioned linear regression.
+
 
 **Fig. 25**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Avg%20Duration%20based%20on%20total%20COMBINED.png "Figure 25")
-
-As you can see from the above graphs, there are pretty notable differences between the 'types' of injury histories we use. More specifically, the 'Mild' categories in both the 'count' and 'duration' versions of the injury histories are defined differently. The 'Mild' category of injury histories is defined as when a player has incurred between 1-3 injuries in the 'count' version. Whereas in the 'duration' version, a 'Mild' injury history is when a player has incurred between 28-90 days of an injury. This is likely what explains the large discrepancy between the two graphs. 
-
-Unsurprisingly, when considering only the injury history to specific body parts (Figure 24), we yield higher average injury durations  in each category of injury history severity than when we consider the total injury history of a player (Figure 25). The only exception to this are the 'Little-No' and 'No' Injury history categories which yield approximately the same average injury durations. 
-
-The figure which displays the most interesting trend to me thus far is Figure 24. There appears to be a visible relationship between how many injuries (injury count) a player has previously incurred to the body part they injured and the duration of the new injury. This is worth investigating further. Figure 25 also displays a similar trend with the total injury counts, but it is not as evident as the one found in Figure 24. However, it is still worth investigating as well. 
-
-In order to investigate the relationship between a player's injury count and the injury duration they incurred, I plotted a linear regression to see if there truly is a correlation between the two variables. Figure 26 is a scatter plot of the body part's injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. The 'p' value in the legend of the graph is the Pearson correlation coefficient, and the equation just below it is the calculated regression equation (where x is body part's injury count). Figure 27 is the summary report of the aforementioned linear regression.
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 25")
 
 
 **Fig. 26**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 26")
-
-
-**Fig. 27**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20results.PNG "Figure 27")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Body%20Inj.%20Count%20vs%20Injury%20Duration%20-%20regression%20results.PNG "Figure 26")
 
 
 The linear regression above yielded some interesting results. While the Pearson correlation coefficient was low at 0.077, the regression model had an incredibly low p-value at 0.1%. The adjusted R-squared value was also incredibly low at 0.5%. Since the P-value was low, we can conclude that the injury count of the body part is _significant_. However, the low adjusted R-squared value indicates that our model does not explain a lot of the variation in the data. That means that when constructing other models, we should consider including the body part's injury count as a variable since it has proven to be significant. However, a model _only_ considering the body part's injury count does not appear to be enough to predict a player's injury duration. 
 
 
 
-I also investigated the relationship between the player's total injury count and the duration of their injury. Figure 28 is a scatter plot of the player's total injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. Figure 29 is the summary report of the linear regression in Figure 28. 
+I also investigated the relationship between the player's total injury count and the duration of their injury. Figure 27 is a scatter plot of the player's total injury count (x-axis) and the duration of the injury with a linear regression line plotted over it. Figure 28 is the summary report of the linear regression in Figure 28. 
+
+
+**Fig. 27**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20plot.png "Figure 27")
 
 
 **Fig. 28**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20plot.png "Figure 28")
-
-
-**Fig. 29**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20Results.PNG "Figure 29")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Injury%20History%20Graphs/Total%20Num.%20of%20Injuries%20vs%20Injury%20duration%20-%20regression%20Results.PNG "Figure 28")
 
 The graph indicates that there is no correlation between the player's total injury count and the injury duration. The Pearson correlation coefficient is only 0.008. Furthermore, the linear model's p-value is 74.6%, which is well above the 5% threshold. Finally, the adjusted R-Score is at -.001, which further emphasizes the point that the linear model is _not_ a good fit. So I can conclude that there appears to be no linear relationship between a player's total injury count and their injury duration.
 
@@ -367,43 +357,43 @@ Overall, the only 'significant' predictor we have found so far in predicting inj
 Finally, I decided to investigate the impact of the distance traveled by players on the severity of their injuries. I quickly wanted to see how much the average distance traveled by players has changed over the past few seasons. Figure 30 details the average distance traveled by all NBA players immediately prior to injury (in miles). 
 
 
-**Fig. 30**:
+**Fig. 29**:
 
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/avg%20distance%20traveled%20per%20season%20-%20combined.png
- "Figure 30")
+ "Figure 29")
 
-From the above graph, you can see that there does not appear to be a _large_ difference between the average distance traveled between the seasons (for both the 7 and 28 day averages). However, the 2018-19 season does appear to have the largest average distance traveled for both the 7 and 28 day average distances. Coincidentally, this is also the year that the NBA viewed the most injuries in the regular season from our sample size (see Figure 30). 
+From the above graph, you can see that there does not appear to be a _large_ difference between the average distance traveled between the seasons (for both the 7 and 28 day averages). However, the 2018-19 season does appear to have the largest average distance traveled for both the 7 and 28 day average distances. Coincidentally, this is also the year that the NBA viewed the most injuries in the regular season from our sample size (see Figure 29). 
 
-This marginal increase in distance traveled can be explained by the NBA's pace of play increasing drastically over the past few years. It is possible that the acute-chronic workload ratio has remained the same over the past few years simply because players are expected to run more _all_ the time. So, I want to see if the players who incurred more severe injuries are running more on average. Figure 31 contains the scatter plots of the average distance traveled by a player immediately prior to an injury (both the 7 day and 28 day averages) compared to their injury duration. 
+This marginal increase in distance traveled can be explained by the NBA's pace of play increasing drastically over the past few years. It is possible that the acute-chronic workload ratio has remained the same over the past few years simply because players are expected to run more _all_ the time. So, I want to see if the players who incurred more severe injuries are running more on average. Figure 30 contains the scatter plots of the average distance traveled by a player immediately prior to an injury (both the 7 day and 28 day averages) compared to their injury duration. 
+
+**Fig. 30**:
+
+
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Scatter%20plot%20-%20COMBINED%20dayavg%20distance%20traveled%20vs%20injury%20duration.png "Figure 30")
+
+From the above scatter plot, there does not seem to be a visible relationship between the average distance traveled and the injury durations. In order to investigate this further, I plotted the average distance traveled for each category of injury severity (the categories are broken down in Table 1).
+
 
 **Fig. 31**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Scatter%20plot%20-%20COMBINED%20dayavg%20distance%20traveled%20vs%20injury%20duration.png "Figure 31")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/injury%20severity%20vs%20avg%20distance%20traveled%20-%20bar%20-%20combined.png "Figure 31")
 
-From the above scatter plot, there does not seem to be a visible relationship between the average distance traveled and the injury durations. In order to investigate this further, I plotted the average distance traveled for each category of injury severity (the categories are broken down in Table 1).
+From the above bar graphs, there does not appear to be a significant difference in the averages between each injury severity category. However, mild injuries appear to have larger average distances traveled over the past 28 days than the other injury categories. To check whether or not there was a correlation between injury severity and average distance traveled, I ran a linear regression to see how well the average distance traveled can predict injury severity. Figures 32 and 33 show the plot and the summary of the linear regression ran when comparing the 7 day average of the distance traveled and the injury duration. 
 
 
 **Fig. 32**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/injury%20severity%20vs%20avg%20distance%20traveled%20-%20bar%20-%20combined.png "Figure 32")
-
-From the above bar graphs, there does not appear to be a significant difference in the averages between each injury severity category. However, mild injuries appear to have larger average distances traveled over the past 28 days than the other injury categories. To check whether or not there was a correlation between injury severity and average distance traveled, I ran a linear regression to see how well the average distance traveled can predict injury severity. Figures 32 and 33 show the plot and the summary of the linear regression ran when comparing the 7 day average of the distance traveled and the injury duration. 
-
-
-**Fig. 33**:
-
-
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(7%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 33")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(7%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20plot.png "Figure 32")
 
 
 
 **Fig. 33**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(7%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20summary.PNG "Figure 34")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/Average%20Distance%20Traveled%20Graphs/Distance%20Traveled%20(7%20day%20Average)%20vs%20Injury%20Duration%20-%20regression%20summary.PNG "Figure 33")
 
 
 From the above figures, you can see that there is little to no correlation between the two variables. The Pearson correlation coefficient was low at -0.042. Additionally, the p-value came out to be 7.8%, which is well above the maximum threshold of 5%. And finally, the adjusted R-squared value came in at only 0.001. As a result, I can conclude that this is not a good linear regression model and that the average distance traveled over the past 7 days is not a significant variable when it comes to predicting the total injury duration.
