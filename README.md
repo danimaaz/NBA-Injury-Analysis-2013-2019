@@ -452,11 +452,11 @@ To test how feasible these schedule alternations are, I calculated what would th
 Below is a graph depicting how accurate the model was for each season from 2013. Table 5 details the average accuracy of each model.
 
 
-**Fig. 36**:
+**Fig. 37**:
 
 
-![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/wrapping%20it%20all%20up/MultipleLinearRegression.PNG
- "Figure 36")
+![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019-/blob/main/Images%20and%20Graphs/alternate%20regular%20season%20models%20accuracy.png
+ "Figure 37")
 
 
 
@@ -465,9 +465,9 @@ Below is a graph depicting how accurate the model was for each season from 2013.
 
 | Alternate Regular Season Model  | Average Accuracy (%) |
 | --------------------------------|:--------------------:|
-| 58 Game Model                   | 0-28                 |
-| 62 Game Model                   | 28-90                |
-| 72 Game Model                   | 90-180               |
+| 58 Game Model                   | 93.75%               |
+| 62 Game Model                   | 90.625%              |
+| 72 Game Model                   | 96.875%              |
 
 
 
