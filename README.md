@@ -8,11 +8,11 @@ Recently, NBA personalities have complained that the players in the league are '
 
 ## Methodology
 
-Prior to gathering the data, I had to decide exactly how I would classify a player's 'workload' and whether or not they were overworked. Upon reading [these](https://pubmed.ncbi.nlm.nih.gov/32125672/) [two](https://www.scienceforsport.com/acutechronic-workload-ratio/) articles, I decided that the best method would be to track what a player's acute-chronic workload ratio (ACWR for short) was at the time of the injury. The ACWR ratio monitors how much effort the athlete has recently exerted vs how much effort the athlete is _used_ to exerting. Generally, sports scientists use the average workload the athlete has exerted over the past 7 days  and 28 days as the 'recent effort' and 'normal effort' respectively. An ACWR above 1 indicates that an athlete has exerted more effort on average over the past 7 days than over the past 28 days. Similarly,  ACWR below 1 indicates that an athlete has exerted less effort on average over the past 7 days than over the past 28 days. And finally, an ACWR of 1 indicates that an athlete has exerted the exact same amount of effort on average the past 7 days as he has over the past 28 days. 
+Before gathering the data, I had to decide exactly how I would classify a player's 'workload' and whether or not the player was 'overworked'. Upon reading [these](https://pubmed.ncbi.nlm.nih.gov/32125672/) [two](https://www.scienceforsport.com/acutechronic-workload-ratio/) articles, I decided that the best method would be to track a player's acute-chronic workload ratio (ACWR for short) at the time of the injury. The ACWR ratio monitors how much effort the athlete has recently exerted vs how much effort the athlete is _used_ to exerting. Generally, sports scientists use the average workload the athlete has exerted over the past 7 days and 28 days as the 'recent effort' and 'normal effort' respectively. An ACWR above 1 indicates that an athlete has exerted more effort on average over the past 7 days than over the past 28 days. Similarly, an ACWR below 1 indicates that an athlete has exerted less effort on average over the past 7 days than over the past 28 days. And finally, an ACWR of 1 indicates that an athlete has exerted the exact same amount of effort on average over the past 7 days as he has over the past 28 days.
 
 Classifying exactly what an NBA player's workload is was tricky. Since I have no access to the training data of individual players, I was forced to resort to statistics that are readily available to the public on NBA.com. I decided that using the in-game distances a player has traveled would be the most appropriate metric to define as a player's 'workload'. 
 
-Next, I had to decide which timeframes I had to use to conduct this analysis. The NBA only started tracking the distance traveled by players during the 2013-14 season, so I was restricted between the years of 2013-2021. Considering that the 2019-20 and 2020-21 seasons were heavily affected by the onset of COVID-19, I decided to only conduct my analysis on the seasons that occured between 2013-2019.
+Next, I had to decide which timeframes I had to use to conduct this analysis. The NBA only started tracking the distance traveled by players during the 2013-14 season, so I was restricted between the years of 2013-2021. Considering that the 2019-20 and 2020-21 seasons were heavily affected by the onset of COVID-19, I decided to only conduct my analysis on the seasons that occurred between 2013-2019.
 
 While my analysis was only on data from 2013-2019, I also had to consider that a player's injury history may play a large role in how susceptible they are to injuries. Thus, I gathered injury data from 1992-2019 to ensure that every player in the NBA would have their true injury history recorded. 
 
@@ -20,7 +20,7 @@ While my analysis was only on data from 2013-2019, I also had to consider that a
 
 ## Hypothesis
 
-Being an avid NBA fan over the past 10 years (Go Knicks!), the eye test tells me that injuries are indeed on the rise. To me, it feels like an important player is getting injured every other week. When I was younger, important players seemed to rarely get injured and injuries were viewed more as like 'freak accident'. Additionally, the league pace of the league has also increased significantly over the past 10 years due to the rise of 'small ball' strategies (teams opting to play the smaller and quicker players). Since teams are playing a lot faster than they have before, I do suspect that many injuries can be attributed to the tough 82 game schedule. Also, the eye test tells me that the most severe injuries seem to happen when players are in the middle of a rough patch in the team's schedule. Since more players are expected to run more each game, a week with 4-5 games can be incredibly taxing on a player. Thus I do expect that we will see a strong correlation between the average ACWR of players and severity of injuries.
+Being an avid NBA fan over the past 10 years (Go Knicks!), the eye test tells me that injuries are indeed on the rise. To me, it feels like an important player is getting injured every other week. When I was younger, important players seemed to rarely get injured and severe injuries were usually considered to be 'freak accidents'. Additionally, the pace of the league has also increased significantly over the past 10 years due to the rise of 'small ball' strategies (teams opting to play the smaller and quicker players). Since teams are playing a lot faster than they have before, I do suspect that many injuries can be attributed to the tough 82 game schedule. Also, the eye test tells me that the most severe injuries seem to happen when players are in the middle of a rough patch in the team's schedule. Since more players are expected to run more each game, a week with 4-5 games can be incredibly taxing on a player. Thus, I do expect that we will see a strong correlation between the average ACWR of players and the severity of injuries.
 
 
 
@@ -33,7 +33,7 @@ Below is a screenshot of how the data looked like once I scraped it.
 
 ![alt text](https://github.com/danimaaz/NBA-Injury-Analysis-2013-2019/blob/main/Images%20and%20Graphs/example%20sc.PNG "Figure 1")
 
-As you can see, there are only 5 columns: Date, Team, Acquired, Relinquished and Notes. 
+As you can see, there are only 5 columns: Date, Team, Acquired, Relinquished, and Notes. 
 The Acquired column indicated which player was being _removed_ from the injury list on that date, whereas the Relinquished column indicated which player was being _added_ to the injury list on that date. The Notes column indicated why a player was being placed on the injury list. 
 
 Scrolling through the data, there were quite a few problems with it. Firstly, many players were 'Placed on the Injury List' (or 'Relinquished') but they were never removed from it. Additionally, a lot of the data did not specify why a player was being placed on the injury list. I suspect that a lot of teams would use the injury list to have their players 'rest' but not specify it.
@@ -43,7 +43,7 @@ Another major problem was that players who were listed as 'out for the season' w
 ### Cleaning the Injury Data
 The data-cleaning process for both the 1992-2013 and  2013-2019 datasets consisted of:
 
-**•** Determine which season an injury took place
+**•** Determining which season an injury took place
 
 
 **•** Ensuring that the names in the 'Relinquished' and 'Acquired' columns were consistent of those used on the NBA website
@@ -64,15 +64,15 @@ The data-cleaning process for both the 1992-2013 and  2013-2019 datasets consist
 **•** Dropping all columns with unnecessary information
 
 
-Once I was done the above steps for the 1992-2013 data, I was ready to create a new ' Player Injury History' dataframe that would be used in the final analysis. 
-The player injury history would specify which how many times the player has injured each body part (their 'injury count') as well as the cumulative number of days a player was out due to an injury on said body part (their cumulative injury durations). 
+Once I was done the above steps for the 1992-2013 data, I was ready to create a new 'Player Injury History' dataframe that would be used in the final analysis. 
+The player injury history would specify how many times the player has injured each body part (their 'injury count'), the cumulative number of days a player was out due to an injury on said body part, the total number of times a player was injured(their total 'injury count'), as well as the cumulative number of days a player was out with an injury on _any_ body part.  
 
 Once I was finished compiling the player injury history data, I was ready to merge it with the cleaned 2013-2019 injury data. The player injury history dataset was continuously updated to consider the new injuries players incurred as well as the new players that entered the league after 2013.
 
 
 ### Gathering the workload data
 
-Once I incordporated the injury history of the players' into my 2013-2019 data, I was almost ready to analyze it. The last thing I had to do was gather the in-game distances traveled by the players over the past 7 and 28 days. I used the [NBA API](https://github.com/swar/nba_api) library to help me with extract the necessary data. Once I finished scraping the necessary data, the data was finally ready for analysis. Below is a screencap of the data right before I started the analysis:
+Once I incorporated the injury history of the players' into my 2013-2019 data, I was almost ready to analyze it. The last thing I had to do was gather the in-game distances traveled by the players over the past 7 and 28 days. I used the [NBA API](https://github.com/swar/nba_api) library to help me with extract the necessary data. Once I finished scraping the necessary data, the data was finally ready for analysis. Below is a screencap of the data right before I started the analysis:
 
 **Fig. 2**:
 
@@ -432,19 +432,21 @@ While I did not succeed in finding a successful model to build injury duration, 
 
 The alternatives that I think may be viable for the NBA are the following:
 
+
+
 1. The 58 game season
 
-⋅⋅⋅ In the 58 game season, teams would play each team in the league (29 opposing teams) twice, once at home, and once away.
+   In the 58 game season, teams would play each team in the league (29 opposing teams) twice, once at home, and once away.
 
 
 2. The 62 game season
 
-⋅⋅⋅ In the 62 game season, teams would play teams within their division 3 times a year (with at least one game at home, and one game away). They would play the remaining 25 teams twice a year, with one home and one away game. 
+   In the 62 game season, teams would play teams within their division 3 times a year (with at least one game at home, and one game away). They would play the remaining 25      teams twice a year, with one home and one away game. 
 
 
-2. The 72 game season
+3. The 72 game season
 
-⋅⋅⋅ In the 72 game season is what the NBA implemented for the 2020-21 Regular Season. Each team would play teams within their conference 3 times a year (with at least one game at home and one game away). They would play the opposing conference only twice a year, with one home game and one away game.
+   In the 72 game season is what the NBA implemented for the 2020-21 Regular Season. Each team would play teams within their conference 3 times a year (with at least one game    at home and one game away). They would play the opposing conference only twice a year, with one home game and one away game.
 
 
 To test how feasible these schedule alternations are, I calculated what would the NBA Regular Season standings would be for each model for the seasons from 2013 until 2019. I then calculated what % of the playoff teams that made the playoffs in my alternate schedule made the playoffs under the regular 82 game season. The % of teams that made the playoffs in both the alternate schedule and the regular 82 game schedule will be considered how 'accurate' the model was. I did not consider how accurate the models predicted the team's placement on the standings. I only considered whether the model was good at predicting which teams are / aren't playoff teams. To determine tie-breakers, I used the NBA rules for tie-breakers that can be found [here](https://ak-static-int.nba.com/wp-content/uploads/sites/2/2017/06/NBA_Tiebreaker_Procedures.pdf).
